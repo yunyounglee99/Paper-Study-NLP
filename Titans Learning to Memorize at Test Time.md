@@ -85,16 +85,16 @@ context, layer, gated branch로 통합된 Titan 변형타입도 소개할거다
 - 이것에 영감을 받아서 ‘surprise’라는 것을 정의하고 이것의 gradient를 계산할 수 있게 함
     - gradient가 클수록 이전의 data와 많이 다른 input data임
     
-    $\mathcal{M}_t=\mathcal{M}_{t-1}-\theta_t\nabla{\ell}(\mathcal{M}_{t-1};x_t) $
+    - $\mathcal{M}_t=\mathcal{M}_{t-1}-\theta_t\nabla{\ell}(\mathcal{M}_{t-1};x_t) $
     
     - 여기서 $\nabla{\ell}(\mathcal{M}_{t-1};x_t)$가 surprise를 의미
     - 하지만 이런 형태는 big surprise(gradient 큼)이 오면 이전 data들은 missing되기 쉬움(local minima)
     - human memory 관점에서도 특정 event가 처음에는 big surprise였을지라도, 오랜 기간동안 지속적으로 놀라움을 주기는 힘듦
     - 그래서 surprise metric을 past surprise와 momentary surprise로 나눔
     
-    $\mathcal{M}_t=\mathcal{M}_{t-1}+S_t$
+   -  $\mathcal{M}_t=\mathcal{M}_{t-1}+S_t$
     
-    $S_t=\eta_t\ S_{t-1}-\theta_t\nabla{\ell}(\mathcal{M}_{t-1};x_t)$
+    - $S_t=\eta_t\ S_{t-1}-\theta_t\nabla{\ell}(\mathcal{M}_{t-1};x_t)$
     
     - 여기서 $S_{t-1}$이 past surprise, $\nabla{\ell}(\mathcal{M}_{t-1};x_t)$가 momentary surprise
     - $\eta_t$는 data-dependent surprise decay(a function of $x_t$)로 시간에 따른 surprise의 감소 비율을 나타냄
