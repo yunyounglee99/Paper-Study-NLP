@@ -193,7 +193,8 @@ $\nabla \ell(W_0;x_t) = (W_0x_t-x_t)x_t^{\top}\ \Rightarrow \  \sum_{i=1}^t\thet
 
 ### Parameters as the Function of Chunks
 
-![스크린샷 2025-02-06 오후 7.14.46.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-06_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_7.14.46.png)
+<img width="468" alt="스크린샷_2025-02-06_오후_7 14 46" src="https://github.com/user-attachments/assets/a06cdd47-31a7-4893-8880-78567be7139d" />
+
 
 - input $x_t$에 dependent한 parameter $\alpha_t, \  \theta_t, \ \eta_t$ 를 사용하는 것이 아닌
 - 각 청크 내에서는 constant(same value) $\alpha, \ \theta, \ \eta$를 사용
@@ -246,7 +247,8 @@ $FFN(x) = W_V \  \mathsf{Softmax} \ (W_Kx)$
 
 ## 4. 1. Memory as a Context(MAC)
 
-![스크린샷 2025-02-08 오후 1.20.59.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-08_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_1.20.59.png)
+<img width="584" alt="스크린샷_2025-02-08_오후_1 20 59" src="https://github.com/user-attachments/assets/7983d3a4-6c42-4b34-9357-3b842aa260cb" />
+
 
 - memory를 current information의 context로 간주함
 - input : long sequence $x \ \in \ \mathbb{R}^{N \times d_{in}}$
@@ -297,14 +299,16 @@ $o_t = y_t \otimes\mathcal{M}^*_{t}(y_t)$
     (3). 즉, long-term memory가 test time에서도 계속 학습을 함
     
 
-![스크린샷 2025-02-08 오후 3.10.27.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-08_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_3.10.27.png)
+<img width="415" alt="스크린샷_2025-02-08_오후_3 10 27" src="https://github.com/user-attachments/assets/2e3cf99a-4bf5-4083-95cd-96e325841875" />
+
 
 - 위 사진은 각 sequence별로 참조하는 정보(토큰) 수인데
 - long-term memory, persistent memory가 각각 추가될수록 sequence별 참조하는 정보의 양이 증가하는 것을 확인할 수 있음
 
 ## 4. 2. Gated Memory(MAG)
 
-![스크린샷 2025-02-08 오후 3.26.00.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-08_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_3.26.00.png)
+<img width="575" alt="스크린샷_2025-02-08_오후_3 26 00" src="https://github.com/user-attachments/assets/534ecb7f-96c5-4a55-96f7-eeacfba52901" />
+
 
 - sliding window attention 사용 (CNN과 유사하게 window를 움직이며 단기적인 토큰에 집중함)
 
@@ -319,7 +323,8 @@ $o = y \otimes\mathcal{M}(\tilde{x})$
 - $\otimes$ : non-linear gating
 - 실험에서는 output을 learnable vector-calued weight를 통해 normalize한 후, Non-linearity $\sigma(.)$을 적용
 
-![스크린샷 2025-02-08 오후 3.42.40.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-08_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_3.42.40.png)
+<img width="401" alt="스크린샷_2025-02-08_오후_3 42 40" src="https://github.com/user-attachments/assets/9931fd47-8c35-4b55-9d5f-c08ec370b5b2" />
+
 
 - 그림에서도 알 수 있듯이, sequence마다 long-term memory, persistent memory를 참조하는 MAC과 달리 처음부터 바로 두 메모리 모듈을 참조함
 - SWA가 바로 shor-term memory 역할을 수행할 수 있음
@@ -328,7 +333,8 @@ $o = y \otimes\mathcal{M}(\tilde{x})$
 
 ## 4. 3. Memory as a Layer(MAL)
 
-![스크린샷 2025-02-08 오후 8.03.03.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-08_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.03.03.png)
+<img width="556" alt="스크린샷_2025-02-08_오후_8 03 03" src="https://github.com/user-attachments/assets/a4e6946e-c58a-4080-b1ee-c010e1f608a1" />
+
 
 - recurrent net, full or sliding window attention의 stack
     - 여기서 recurrent net은 논문의 long-term memory(LMM)을 사용
@@ -397,7 +403,8 @@ $o = \mathsf{SW-Attn}(y)$
 
 ## 5. 2. Language Modeling
 
-![스크린샷 2025-02-10 오후 5.32.00.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-10_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_5.32.00.png)
+<img width="591" alt="스크린샷_2025-02-10_오후_5 32 00" src="https://github.com/user-attachments/assets/e4f59cca-0637-434a-8dfc-5dda854af0ed" />
+
 
 - SOTA 달성
 - LMM vs TTT
@@ -415,14 +422,17 @@ $o = \mathsf{SW-Attn}(y)$
 
 ## 5. 3. Needle in a Haystack
 
-![스크린샷 2025-02-10 오후 5.56.16.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/a1166096-d995-431f-bfc4-deabce09ddd5.png)
+![a1166096-d995-431f-bfc4-deabce09ddd5](https://github.com/user-attachments/assets/ac0a583a-0d25-43c7-be25-b297182a134c)
+
+
 
 - forgetting mechanism, momentum 덕분에 memory 용량을 더 잘 관리할 수 있음
 - forgetting mechanism이 mamba와 달리 non-linearity를 가지기 때문에 더 우수한 성능을 보임
 
 ## 5. 4. BABILong Benchmark
 
-![스크린샷 2025-02-11 오후 9.38.57.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-11_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_9.38.57.png)
+<img width="475" alt="스크린샷_2025-02-11_오후_9 38 57" src="https://github.com/user-attachments/assets/cde48187-d01d-4a58-8416-6fa67701e63e" />
+
 
 - 매우 긴 문서에서 분산된 여러 사실을 기반으로 **추론**
 - 두 가지 실험과정을 세팅해서 실험 진행
@@ -433,12 +443,13 @@ $o = \mathsf{SW-Attn}(y)$
 
 ## 5. 5. The Effect of Deep Memory
 
-![스크린샷 2025-02-11 오후 10.37.37.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-11_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_10.37.37.png)
+<img width="653" alt="스크린샷_2025-02-11_오후_10 37 37" src="https://github.com/user-attachments/assets/eaff092e-3c91-4dd9-a89c-10f4ae861e49" />
 
 - Mamba와 비교했을때, perplexity 정도가 훨씬 낫다는 것을 보여줌
 - memory depth($L_{\mathcal{M}}$)이 증가할 수록 모든 sequence length에서 perplexity가 개선되는 것을 보여줌
 
-![스크린샷 2025-02-11 오후 10.38.45.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-11_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_10.38.45.png)
+<img width="212" alt="스크린샷_2025-02-11_오후_10 38 45" src="https://github.com/user-attachments/assets/6c240a4f-3029-4faa-b948-551af4ff5236" />
+
 
 - sequence length에 상관없이 초당 처리하는 토큰 수가 일정함
 - memory depth가 증가할수록 처리량이 선형적으로 감소
@@ -448,15 +459,18 @@ $o = \mathsf{SW-Attn}(y)$
 
 ### 5. 6. Time Series Forcasting
 
-![스크린샷 2025-02-11 오후 10.51.14.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-11_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_10.51.14.png)
+<img width="595" alt="스크린샷_2025-02-11_오후_10 51 14" src="https://github.com/user-attachments/assets/08f391b4-392f-4267-8da3-381d07eecbbf" />
+
 
 ### 5. 7. DNA Modeling
 
-![스크린샷 2025-02-11 오후 10.50.20.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-11_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_10.50.20.png)
+<img width="507" alt="스크린샷_2025-02-11_오후_10 50 20" src="https://github.com/user-attachments/assets/46e26b41-06bf-4075-8f8d-320b6ff31ad6" />
+
 
 ### 5. 8. Efficiency
 
-![스크린샷 2025-02-11 오후 10.51.38.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-11_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_10.51.38.png)
+<img width="223" alt="스크린샷_2025-02-11_오후_10 51 38" src="https://github.com/user-attachments/assets/f06565b6-e5b4-444f-892f-562142650a24" />
+
 
 - 효율성 측면에서는 다른 모델들에 비해 다소 뒤떨어짐
 - 저자들은 여러가지 이유(라고 하고 핑계라고 읽는다…)들을 서술함
@@ -465,4 +479,5 @@ $o = \mathsf{SW-Attn}(y)$
 
 ### 5. 9. Ablation study
 
-![스크린샷 2025-02-13 오전 9.14.30.png](Titans%20Learning%20to%20Memorize%20at%20Test%20Time%20197a7930e09c80f893e2fbd4f8061d12/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2025-02-13_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_9.14.30.png)
+<img width="407" alt="스크린샷_2025-02-13_오전_9 14 30" src="https://github.com/user-attachments/assets/ada1410a-84eb-4205-9c02-503d7e2847cb" />
+
