@@ -86,6 +86,7 @@ context, layer, gated branch로 통합된 Titan 변형타입도 소개할거다
     - gradient가 클수록 이전의 data와 많이 다른 input data임
     
     $\mathcal{M}_t=\mathcal{M}_{t-1}-\theta_t\nabla{\ell}(\mathcal{M}_{t-1};x_t)$
+  
     
     - 여기서 $\nabla{\ell}(\mathcal{M}_{t-1};x_t)$가 surprise를 의미
     - 하지만 이런 형태는 big surprise(gradient 큼)이 오면 이전 data들은 missing되기 쉬움(local minima)
