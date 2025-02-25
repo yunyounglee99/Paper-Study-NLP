@@ -1,7 +1,5 @@
 # Titans: Learning to Memorize at Test Time
 
-작성자: 이윤영
-최종 편집 일시: February 20, 2025 5:51 PM
 
 # 1. Introduction
 
