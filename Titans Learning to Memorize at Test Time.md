@@ -34,7 +34,7 @@
     
     Q4. 어떻게하면 효율적인 구조를 디자인하고 서로 다른 메모리 시스템을 한데 통합할 수 있는가
     
-    Q5. 장기 기억을 저장하고 기억하기 위해서는 deep memory module이 필요한가
+    Q5. 장기 기억을 저장하고 기억하기 위해서는 deep memory module이 필요한가 
     
 
 ### Contributions and Roadmap
