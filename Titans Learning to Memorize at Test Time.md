@@ -84,7 +84,7 @@ context, layer, gated branch로 통합된 Titan 변형타입도 소개할거다
 - neuropsychology에 따르면, 사람은 예상을 벗어나는 event에 대해 더 잘 기억하는 경향이 있음
 - 이것에 영감을 받아서 ‘surprise’라는 것을 정의하고 이것의 gradient를 계산할 수 있게 함
     - gradient가 클수록 이전의 data와 많이 다른 input data임
-    
+    -
       $$
       \mathcal{M}_t = \mathcal{M}_{t-1} - \theta_t \nabla \ell (\mathcal{M}_{t-1}; x_t)
       $$
